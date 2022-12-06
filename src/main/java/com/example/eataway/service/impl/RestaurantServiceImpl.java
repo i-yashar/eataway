@@ -19,4 +19,9 @@ public class RestaurantServiceImpl implements RestaurantService {
     public List<Restaurant> getRestaurants() {
         return this.restaurantRepository.findAll();
     }
+
+    @Override
+    public Restaurant getRestaurantById(Long id) {
+        return this.restaurantRepository.findById(id).orElseThrow();
+    }
 }

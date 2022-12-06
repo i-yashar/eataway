@@ -27,7 +27,7 @@ public class SecurityConfig {
         http
                 .authorizeRequests()
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                .antMatchers("/", "/test", "/eataway/restaurants").permitAll()
+                .antMatchers("/", "/test", "/eataway/restaurants", "/eataway/restaurants/*").permitAll()
                 .antMatchers("/users/login", "/users/register").anonymous()
                 .anyRequest().authenticated()
                 .and()
