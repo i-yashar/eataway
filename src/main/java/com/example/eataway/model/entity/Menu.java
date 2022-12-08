@@ -20,7 +20,7 @@ public class Menu {
     @Column(nullable = false)
     private Double price;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private Set<Item> items;
 
     @ManyToOne
