@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.security.Principal;
+
 @Controller
 @RequestMapping("/eataway")
 public class DashboardController {
@@ -18,6 +20,14 @@ public class DashboardController {
     public DashboardController(RestaurantService restaurantService, MenuService menuService) {
         this.restaurantService = restaurantService;
         this.menuService = menuService;
+    }
+
+    @GetMapping
+    public String welcomePage(Model model, Principal principal) {
+        if(principal != null) {
+            model.addAttribute("user", principal.getName());
+        }
+        return "welcome";
     }
 
     @GetMapping("restaurants")
