@@ -1,5 +1,5 @@
 package com.example.eataway.model.entity.enums;
 
 public enum UserRoleEnum {
-    USER, MODERATOR, DELIVERER
+    USER, MODERATOR, DELIVERY_DRIVER
 }

@@ -3,8 +3,8 @@ package com.example.eataway.model.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "students")
-public class Student {
+@Table(name = "delivery_drivers")
+public class DeliveryDriver {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

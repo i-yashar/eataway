@@ -33,4 +33,9 @@ public class DashboardController {
 
         return "restaurant-menus";
     }
+
+    @GetMapping("restaurnats/{restaurantId}/menus/{menuId}/addToCart")
+    public String addMenuToCart(@PathVariable Long restaurantId, @PathVariable Long menuId) {
+        return "";
+    }
 }
