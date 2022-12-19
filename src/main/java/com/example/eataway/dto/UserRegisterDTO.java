@@ -13,33 +13,19 @@ import javax.validation.constraints.Size;
         message = "Passwords do not match."
 )
 public class UserRegisterDTO {
-    @Size(min = 3, max = 25, message = "Username should be between 3 and 25 symbols.")
-    @NotBlank
-    @UniqueEmail(message = "Username already taken.")
-    private String username;
-
+    @UniqueEmail(message = "Email already taken.")
     @Email
     private String email;
 
-    @Size(min = 2, max = 20)
+    @Size(min = 2, max = 50)
     @NotBlank
-    private String firstName;
-
-    private String lastName;
+    private String name;
 
     @Size(min = 5, max = 30)
     @NotBlank
     private String password;
 
     private String confirmPassword;
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
 
     public String getEmail() {
         return email;
@@ -49,20 +35,12 @@ public class UserRegisterDTO {
         this.email = email;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getName() {
+        return name;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getPassword() {
