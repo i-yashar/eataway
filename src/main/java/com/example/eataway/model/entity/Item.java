@@ -42,4 +42,9 @@ public class Item {
         this.quantity = quantity;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return name + " - " + quantity + " grams";
+    }
 }

@@ -1,6 +1,7 @@
 package com.example.eataway.web;
 
 import com.example.eataway.service.MenuService;
+import com.example.eataway.service.OrderService;
 import com.example.eataway.service.RestaurantService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,10 +17,12 @@ public class DashboardController {
 
     private final RestaurantService restaurantService;
     private final MenuService menuService;
+    private final OrderService orderService;
 
-    public DashboardController(RestaurantService restaurantService, MenuService menuService) {
+    public DashboardController(RestaurantService restaurantService, MenuService menuService, OrderService orderService) {
         this.restaurantService = restaurantService;
         this.menuService = menuService;
+        this.orderService = orderService;
     }
 
     @GetMapping
@@ -44,8 +47,9 @@ public class DashboardController {
         return "restaurant-menus";
     }
 
-    @GetMapping("restaurnats/{restaurantId}/menus/{menuId}/addToCart")
-    public String addMenuToCart(@PathVariable Long restaurantId, @PathVariable Long menuId) {
-        return "";
+    @GetMapping("restaurants/{restaurantId}/menus/{menuId}/addToCart")
+    public String addMenuToCart(@PathVariable Long restaurantId, @PathVariable Long menuId, Principal principal) {
+        orderService.addMenu(menuId, principal.getName());
+        return "redirect:/eataway/restaurants";
     }
 }

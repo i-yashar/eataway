@@ -27,7 +27,7 @@ public class SecurityConfig {
         http
                 .authorizeRequests()
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                .antMatchers("/", "/test", "/eataway/restaurants", "/eataway/restaurants/*").permitAll()
+                .antMatchers("/", "/eataway", "/eataway/restaurants", "/eataway/restaurants/*").permitAll()
                 .antMatchers("/users/login", "/users/register").anonymous()
                 .anyRequest().authenticated()
             .and()
@@ -35,12 +35,12 @@ public class SecurityConfig {
                 .loginPage("/users/login")
                 .usernameParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY)
                 .passwordParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_PASSWORD_KEY)
-                .defaultSuccessUrl("/")
+                .defaultSuccessUrl("/eataway")
                 .failureForwardUrl("/users/login-error")
             .and()
                 .logout()
                 .logoutUrl("/users/logout")
-                .logoutSuccessUrl("/")
+                .logoutSuccessUrl("/eataway")
                 .invalidateHttpSession(true)
                 .deleteCookies("JSESSIONID");
 

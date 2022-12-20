@@ -1,5 +1,7 @@
 package com.example.eataway.model.entity;
 
+import org.hibernate.annotations.Fetch;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -14,7 +16,7 @@ public class Order {
     @Column(nullable = false)
     private String deliveryAddress;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private Set<Menu> menus;
 
     @ManyToOne

@@ -9,7 +9,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-light sticky-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/">Takeaway</a>
+            <a class="navbar-brand" href="/eataway">Eataway</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -17,35 +17,19 @@
 
                 <ul class="navbar-nav mr-5 mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/dashboard">Dashboard</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="/communities/all">Communities</a>
+                        <a class="nav-link active" href="/eataway/restaurants">Restaurants</a>
                     </li>
                 </ul>
 
-                <form class="d-flex" role="search">
-                    <input class="form-control mr-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
                 <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
                     <th:block sec:authorize="isAuthenticated()">
                         <li class="nav-item">
-                            <a class="nav-link active" href="/posts/addPost">Add new post</a>
-                        </li>
-                        <li>
-                            <a class="nav-link active" href="/communities/create">Create new community</a>
+                            <a class="nav-link active" th:href="@{/eataway/orders/cart}">My cart</a>
                         </li>
                     </th:block>
                 </ul>
                 <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
                     <th:block sec:authorize="isAuthenticated()">
-                        <li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')">
-                            <a class="nav-link active" th:href="@{/admins}">Admin Page</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" th:href="@{/users/{username}/profile(username = ${#authentication.name})}">My Profile</a>
-                        </li>
                         <li class="nav-item">
                             <form th:action="@{/users/logout}" th:method="post">
                                 <input class="btn btn-link nav-link active" type="submit" value="Logout">

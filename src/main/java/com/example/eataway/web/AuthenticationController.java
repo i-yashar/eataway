@@ -30,13 +30,13 @@ public class AuthenticationController {
         return "login";
     }
 
-    @GetMapping("/register")
+    @GetMapping("register")
     @PreAuthorize("isAnonymous()")
     public String register() {
         return "register";
     }
 
-    @PostMapping("/register")
+    @PostMapping("register")
     public String register(@Valid UserRegisterDTO registerModel,
                            BindingResult bindingResult,
                            RedirectAttributes redirectAttributes) {
@@ -49,10 +49,10 @@ public class AuthenticationController {
 
         this.userService.registerAndLogin(registerModel);
 
-        return "redirect:/";
+        return "redirect:/eataway";
     }
 
-    @PostMapping("/login-error")
+    @PostMapping("login-error")
     public String onFailedLogin(
             @ModelAttribute(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY) String username,
             RedirectAttributes redirectAttributes
